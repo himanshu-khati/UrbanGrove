@@ -5,7 +5,7 @@ const connectDatabase = require("./config/database");
 // handling uncaught exception
 process.on("uncaught exception", (err) => {
   console.log(`Error: ${err.message}`);
-  console.log(`Shutting down te server  due to uncaught exception`);
+  console.log(`Shutting down the server  due to uncaught exception`);
   process.exit(1);
 });
 
@@ -16,7 +16,7 @@ connectDatabase();
 
 // create server
 const server = app.listen(process.env.PORT, () => {
-  console.log(`server is running on http://localhost: ${process.env.PORT}`);
+  console.log(`server is running on http://localhost:${process.env.PORT}`);
 });
 
 // unhndled promise rejection

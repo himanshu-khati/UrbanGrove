@@ -28,6 +28,7 @@ exports.getAllProducts = async (req, res, next) => {
     res.status(200).json({
       success: true,
       product,
+      productCount,
     });
   } catch (error) {
     next(error);
@@ -39,7 +40,7 @@ exports.updateProduct = async (req, res, next) => {
   try {
     let product = await Product.findById(req.params.id);
     if (!product) {
-      return next("Product not found", 500);
+      return next(new ErrorHandler("product not found", 500));
     }
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
